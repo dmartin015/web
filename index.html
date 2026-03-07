@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DIEGO MARTIN GARCIA — PLAYER ONE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="cursor"></div>
+  <div id="stars"></div>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>★ DMG.EXE CARGADO</span><span class="sep">✦</span>
+      <span>ESTUDIANTE ASIR 1º AÑO</span><span class="sep">✦</span>
+      <span>INSERT COIN TO CONTINUE</span><span class="sep">✦</span>
+      <span>HIGH SCORE: 999999</span><span class="sep">✦</span>
+      <span>LEVEL UP IN PROGRESS...</span><span class="sep">✦</span>
+      <span>PLAYER ONE READY</span><span class="sep">✦</span>
+      <span>★ DMG.EXE CARGADO</span><span class="sep">✦</span>
+      <span>ESTUDIANTE ASIR 1º AÑO</span><span class="sep">✦</span>
+      <span>INSERT COIN TO CONTINUE</span><span class="sep">✦</span>
+      <span>HIGH SCORE: 999999</span><span class="sep">✦</span>
+      <span>LEVEL UP IN PROGRESS...</span><span class="sep">✦</span>
+      <span>PLAYER ONE READY</span><span class="sep">✦</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">DMG.EXE</div>
+    <ul>
+      <li><a href="#sobre-mi">ABOUT</a></li>
+      <li><a href="#habilidades">SKILLS</a></li>
+      <li><a href="#proyectos">STAGES</a></li>
+      <li><a href="#contacto">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="insert-coin">— INSERT COIN —</p>
+    <h1 class="hero-title">
+      <span class="line1">PLAYER ONE</span>
+      <span class="line2">DIEGO MARTIN GARCIA</span>
+    </h1>
+    <div class="hero-score">
+      SCORE: <span class="val" id="score">000000</span> &nbsp;|&nbsp; LIVES: ♥ ♥ ♥
+    </div>
+
+    <div class="pixel-box fade-up">
+      <div class="row"><span class="lbl">CLASS:</span><span class="val">SysAdmin Jr.</span></div>
+      <div class="row"><span class="lbl">LEVEL:</span><span class="val">ASIR 1 — 1º AÑO</span></div>
+      <div class="row"><span class="lbl">POWER:</span><span class="val">Redes + Linux + Code</span></div>
+      <div class="row"><span class="lbl">STATUS:</span><span class="val" style="animation:blink-soft 1s step-end infinite">▶ LEARNING...</span></div>
+    </div>
+
+    <div class="hero-btns fade-up">
+      <a href="#contacto" class="btn-pixel btn-a">▶ PLAY NOW</a>
+      <a href="#proyectos" class="btn-pixel btn-b">◉ STAGES</a>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi">
+    <div class="sec-header fade-up">
+      <span class="sec-num">STAGE 01</span>
+      <h2 class="sec-title">SOBRE MÍ</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>Hola, soy <span class="hl">Diego</span>. Estudio <span class="hl2">ASIR</span> porque me apasiona entender cómo funcionan los sistemas y redes por dentro.</p>
+        <p>Me gusta meterme en la terminal, configurar servidores y escribir mis primeros scripts. Cada error es una lección nueva.</p>
+        <p>También tengo <span class="hl">ganas de programar</span>: no solo como herramienta técnica, sino como forma de construir cosas que antes no existían.</p>
+        <p>Este portfolio es el <span class="hl2">primer nivel</span> de algo más grande. El juego acaba de empezar.</p>
+      </div>
+      <div class="char-card fade-up">
+        <div class="char-card-title">✦ CHARACTER SELECT ✦</div>
+        <div class="char-avatar">🧑‍💻</div>
+        <div class="char-stat">
+          <span class="char-stat-key">STR</span>
+          <div class="char-stat-bar"><div class="char-stat-fill" data-width="70"></div></div>
+          <span class="char-stat-val">70</span>
+        </div>
+        <div class="char-stat">
+          <span class="char-stat-key">INT</span>
+          <div class="char-stat-bar"><div class="char-stat-fill" data-width="85"></div></div>
+          <span class="char-stat-val">85</span>
+        </div>
+        <div class="char-stat">
+          <span class="char-stat-key">SPD</span>
+          <div class="char-stat-bar"><div class="char-stat-fill" data-width="65"></div></div>
+          <span class="char-stat-val">65</span>
+        </div>
+        <div class="char-stat">
+          <span class="char-stat-key">CUR</span>
+          <div class="char-stat-bar"><div class="char-stat-fill" data-width="95"></div></div>
+          <span class="char-stat-val">95</span>
+        </div>
+        <div class="char-stat">
+          <span class="char-stat-key">EXP</span>
+          <div class="char-stat-bar"><div class="char-stat-fill" data-width="30"></div></div>
+          <span class="char-stat-val">30</span>
+        </div>
+        <div class="status-badge">★ DISPONIBLE PARA COLABORAR ★</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HABILIDADES -->
+  <section id="habilidades">
+    <div class="skills-inner">
+      <div class="sec-header fade-up">
+        <span class="sec-num">STAGE 02</span>
+        <h2 class="sec-title">HABILIDADES</h2>
+        <div class="sec-line"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card fade-up">
+          <div class="skill-card-title"><span class="skill-card-icon">🖧</span> REDES & SISTEMAS</div>
+          <div class="skill-meter-wrap">
+            <div class="skill-meter-label"><span>Linux / Ubuntu</span><span>60%</span></div>
+            <div class="skill-meter"><div class="skill-meter-fill" data-width="60"></div></div>
+          </div>
+          <div class="skill-meter-wrap">
+            <div class="skill-meter-label"><span>Redes TCP/IP</span><span>55%</span></div>
+            <div class="skill-meter"><div class="skill-meter-fill" data-width="55"></div></div>
+          </div>
+          <div class="skill-meter-wrap">
+            <div class="skill-meter-label"><span>Virtualización</span><span>50%</span></div>
+            <div class="skill-meter"><div class="skill-meter-fill" data-width="50"></div></div>
+          </div>
+          <div class="skill-meter-wrap">
+            <div class="skill-meter-label"><span>Windows Server</span><span>45%</span></div>
+            <div class="skill-meter"><div class="skill-meter-fill" data-width="45"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-card fade-up">
+          <div class="skill-card-title"><span class="skill-card-icon">💾</span> PROGRAMACIÓN</div>
+          <div class="skill-meter-wrap">
+            <div class="skill-meter-label"><span>Bash / Shell</span><span>50%</span></div>
+            <div class="skill-meter"><div class="skill-meter-fill" data-width="50"></div></div>
+          </div>
+          <div class="skill-meter-wrap">
+            <div class="skill-meter-label"><span>Python (básico)</span><span>40%</span></div>
+            <div class="skill-meter"><div class="skill-meter-fill" data-width="40"></div></div>
+          </div>
+          <div class="skill-meter-wrap">
+            <div class="skill-meter-label"><span>HTML / CSS</span><span>55%</span></div>
+            <div class="skill-meter"><div class="skill-meter-fill" data-width="55"></div></div>
+          </div>
+          <div class="skill-meter-wrap">
+            <div class="skill-meter-label"><span>JavaScript</span><span>30%</span></div>
+            <div class="skill-meter"><div class="skill-meter-fill" data-width="30"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-card fade-up">
+          <div class="skill-card-title"><span class="skill-card-icon">🕹</span> POWER-UPS</div>
+          <div class="tags-wrap">
+            <span class="tag-pixel">Git</span>
+            <span class="tag-pixel">VirtualBox</span>
+            <span class="tag-pixel">VSCode</span>
+            <span class="tag-pixel">Wireshark</span>
+            <span class="tag-pixel">Packet Tracer</span>
+            <span class="tag-pixel">SSH</span>
+            <span class="tag-pixel">Vim</span>
+            <span class="tag-pixel">Docker (nuevo)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos">
+    <div class="sec-header fade-up">
+      <span class="sec-num">STAGE 03</span>
+      <h2 class="sec-title">PROYECTOS</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="proj-card fade-up">
+        <div class="proj-header">
+          <span class="proj-icon">🌐</span>
+          <span class="proj-badge badge-done">CLEAR!</span>
+        </div>
+        <h3 class="proj-title">PORTFOLIO PERSONAL</h3>
+        <p class="proj-desc">Este mismo sitio web. Frontend desde cero, sin frameworks — HTML, CSS y JS puro.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">HTML</span>
+          <span class="proj-tag">CSS</span>
+          <span class="proj-tag">JS</span>
+        </div>
+      </div>
+
+      <div class="proj-card wip fade-up">
+        <div class="proj-header">
+          <span class="proj-icon">🔧</span>
+          <span class="proj-badge badge-wip">STAGE WIP</span>
+        </div>
+        <h3 class="proj-title">LAB DE REDES</h3>
+        <p class="proj-desc">Simulaciones de redes empresariales en Cisco Packet Tracer — VLANs, OSPF y segmentación.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Networking</span>
+          <span class="proj-tag">Cisco</span>
+          <span class="proj-tag">VLAN</span>
+        </div>
+      </div>
+
+      <div class="proj-card wip fade-up">
+        <div class="proj-header">
+          <span class="proj-icon">⚙️</span>
+          <span class="proj-badge badge-wip">STAGE WIP</span>
+        </div>
+        <h3 class="proj-title">BASH SCRIPTS</h3>
+        <p class="proj-desc">Colección de scripts de automatización para administración en sistemas Linux.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Bash</span>
+          <span class="proj-tag">Linux</span>
+          <span class="proj-tag">Automation</span>
+        </div>
+      </div>
+
+      <div class="proj-card soon fade-up">
+        <div class="proj-header">
+          <span class="proj-icon">❓</span>
+          <span class="proj-badge badge-soon">LOCKED</span>
+        </div>
+        <h3 class="proj-title">??? PRÓXIMO NIVEL</h3>
+        <p class="proj-desc">Nuevo proyecto en camino. Siempre hay un siguiente nivel que desbloquear.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">???</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="contact-inner">
+      <div class="sec-header fade-up">
+        <span class="sec-num">STAGE 04</span>
+        <h2 class="sec-title">CONTACTO</h2>
+        <div class="sec-line"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-text fade-up">
+          <p>¿Quieres colaborar, conectar o simplemente hablar de tecnología?</p>
+          <p>Estoy en modo <span style="color:var(--yellow)">MULTIPLAYER</span> — siempre dispuesto a hacer equipo.</p>
+          <div class="hi-score-box">
+            <div class="hi-score-title">✦ HI-SCORE BOARD ✦</div>
+            <div class="hi-score-row"><span class="rank">1ST</span><span class="name">D.MARTIN</span><span class="pts">999999</span></div>
+            <div class="hi-score-row"><span class="rank">2ND</span><span class="name">TÚ</span><span class="pts">??????</span></div>
+            <div class="hi-score-row"><span class="rank">3RD</span><span class="name">---</span><span class="pts">000000</span></div>
+          </div>
+        </div>
+        <div class="contact-links fade-up">
+          <a href="mailto:hello@dmartin.me" class="contact-link">
+            <span class="c-icon">✉</span>
+            <span class="c-label">EMAIL</span>
+            <span class="c-handle">hello@dmartin.me</span>
+          </a>
+          <a href="https://github.com/dmartin015" target="_blank" class="contact-link">
+            <span class="c-icon">⬡</span>
+            <span class="c-label">GITHUB</span>
+            <span class="c-handle">@dmartin015</span>
+          </a>
+          <a href="https://linkedin.com/in/dmartin015" target="_blank" class="contact-link">
+            <span class="c-icon">in</span>
+            <span class="c-label">LINKEDIN</span>
+            <span class="c-handle">/in/dmartin015</span>
+          </a>
+          <a href="https://instagram.com/dmartin015" target="_blank" class="contact-link">
+            <span class="c-icon">◎</span>
+            <span class="c-label">INSTAGRAM</span>
+            <span class="c-handle">@dmartin015</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="cr">© 2025 DIEGO MARTIN GARCIA</span>
+    <span>ASIR STUDENT — PLAYER ONE</span>
+    <span class="made">★ GAME NOT OVER ★</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
