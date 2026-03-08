@@ -32,7 +32,7 @@
       background: var(--yellow);
       clip-path: polygon(0 0, 60% 0, 100% 40%, 60% 40%, 60% 100%, 40% 100%, 40% 40%, 0 40%);
       pointer-events: none;
-      z-index: 9999;
+      z-index: 99999;
       transform: translate(-4px,-4px);
       image-rendering: pixelated;
     }
@@ -137,6 +137,7 @@
       text-transform: uppercase;
       transition: color 0.1s;
       position: relative;
+      cursor: none;
     }
     nav a:hover { color: var(--yellow); }
     nav a:hover::before { content: '▶ '; color: var(--pink); }
