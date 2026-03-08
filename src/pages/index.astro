@@ -1,3 +1,7 @@
+---
+import Letterboxd from '../components/Letterboxd.astro';
+import SnakeGame from '../components/SnakeGame.astro';
+---
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,8 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DIEGO MARTÍN GARCÍA — PLAYER ONE</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
 </head>
 <body>
 
@@ -193,9 +197,9 @@
           <span class="proj-badge badge-done">CLEAR!</span>
         </div>
         <h3 class="proj-title">PORTFOLIO PERSONAL</h3>
-        <p class="proj-desc">Este mismo sitio web. Frontend desde cero, sin frameworks — HTML, CSS y JS puro.</p>
+        <p class="proj-desc">Este mismo sitio web ahora migrado a Astro, manteniendo la estética original.</p>
         <div class="proj-tags">
-          <span class="proj-tag">HTML</span>
+          <span class="proj-tag">Astro</span>
           <span class="proj-tag">CSS</span>
           <span class="proj-tag">JS</span>
         </div>
@@ -241,6 +245,9 @@
         </div>
       </div>
     </div>
+    
+    <Letterboxd />
+
   </section>
 
   <!-- CONTACTO -->
@@ -295,12 +302,14 @@
     <span class="made">★ GAME NOT OVER ★</span>
   </footer>
 
-  <script src="script.js"></script>
+  <SnakeGame />
+
+  <script src="/script.js" is:inline></script>
   
   <!-- Vercel Speed Insights -->
-  <script>
+  <script is:inline>
     window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
   </script>
-  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js" is:inline></script>
 </body>
 </html>

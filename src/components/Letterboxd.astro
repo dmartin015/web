@@ -1,0 +1,91 @@
+---
+import Parser from 'rss-parser';
+
+const parser = new Parser();
+let movies = [];
+try {
+  const feed = await parser.parseURL('https://letterboxd.com/dmartin015/rss/');
+  movies = feed.items.slice(0, 4); // Las 4 últimas
+} catch (error) {
+  console.error('Error fetching Letterboxd feed:', error);
+}
+
+// Function to extract image src from RSS content
+function extractImage(content) {
+  const imgRegex = /<img[^>]+src="([^">]+)"/;
+  const match = content.match(imgRegex);
+  return match ? match[1] : '';
+}
+---
+
+<div class="lb-container fade-up" style="margin-top: 3rem; background: rgba(0,0,0,0.5); padding: 1.5rem; border: 2px solid var(--pink);">
+  <div class="sec-header">
+    <span class="sec-num">P1</span>
+    <h3 class="sec-title" style="color: var(--pink); font-size:1.2rem; margin:0;">ULTIMAS VELADAS CINEFILAS (LETTERBOXD)</h3>
+  </div>
+  <div class="lb-grid">
+    {movies.length > 0 ? (
+      movies.map((movie) => (
+        <a href={movie.link} target="_blank" rel="noopener noreferrer" class="lb-card">
+          {extractImage(movie.content) ? (
+            <img src={extractImage(movie.content)} alt={movie.title} />
+          ) : (
+            <div class="no-img">NO IMG</div>
+          )}
+          <span>{movie.title}</span>
+        </a>
+      ))
+    ) : (
+      <p style="color:var(--yellow); font-size: 0.8rem;">No se han podido cargar las películas.</p>
+    )}
+  </div>
+</div>
+
+<style>
+.lb-grid {
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
+  gap: 1.5rem; 
+  margin-top:1.5rem;
+}
+.lb-card {
+  text-decoration: none; 
+  color: inherit; 
+  background: #111; 
+  padding: 0.5rem; 
+  border: 1px dashed #555;
+  border-radius: 4px; 
+  display:flex; 
+  flex-direction:column; 
+  align-items:center; 
+  transition: transform 0.2s, border-color 0.2s;
+}
+.lb-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--pink);
+  box-shadow: 0 0 10px rgba(255,45,120,0.4);
+}
+.lb-card img, .no-img {
+  width: 100%; 
+  height: auto; 
+  aspect-ratio: 2/3; 
+  object-fit: cover;
+  border-radius: 2px; 
+  margin-bottom: 0.5rem;
+  image-rendering: pixelated; 
+}
+.no-img {
+  background: #222; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 0.7rem; 
+  color: #777;
+}
+.lb-card span {
+  font-size: 0.7rem; 
+  text-align: center; 
+  color: #fff;
+  line-height:1.2;
+}
+</style>
