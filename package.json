@@ -12,12 +12,12 @@
   "dependencies": {
     "@vercel/analytics": "^2.0.0",
     "@vercel/speed-insights": "^2.0.0",
-    "astro": "^5.0.0",
+    "astro": "^6.0.3",
     "rss-parser": "^3.13.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.7",
-    "@astrojs/vercel": "^8.2.11",
+    "@astrojs/vercel": "^10.0.0",
     "typescript": "^5.7.0"
   }
 }
