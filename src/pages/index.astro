@@ -1,4 +1,5 @@
 ---
+import SpeedInsights from '@vercel/speed-insights/astro';
 import Letterboxd from '../components/Letterboxd.astro';
 import SnakeGame from '../components/SnakeGame.astro';
 ---
@@ -305,11 +306,6 @@ import SnakeGame from '../components/SnakeGame.astro';
   <SnakeGame />
 
   <script src="/script.js" is:inline></script>
-  
-  <!-- Vercel Speed Insights -->
-  <script is:inline>
-    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/speed-insights/script.js" is:inline></script>
-</body>
+  <SpeedInsights />
+  </body>
 </html>
