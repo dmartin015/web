@@ -91,22 +91,6 @@ function playLevelUpSound() {
   });
 }
 
-/** Game-over style low buzz */
-function playGameOverSound() {
-  ensureAudio();
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-  osc.connect(gain);
-  gain.connect(audioCtx.destination);
-  osc.type = "sawtooth";
-  osc.frequency.setValueAtTime(180, audioCtx.currentTime);
-  osc.frequency.exponentialRampToValueAtTime(60, audioCtx.currentTime + 0.6);
-  gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-  gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
-  osc.start(audioCtx.currentTime);
-  osc.stop(audioCtx.currentTime + 0.6);
-}
-
 // ─────────────────────────────────────────────
 //  CUSTOM CURSOR
 // ─────────────────────────────────────────────
@@ -134,7 +118,6 @@ for (let i = 0; i < 120; i++) {
 // ─────────────────────────────────────────────
 let score = 0;
 const scoreEl = document.getElementById("score");
-let scoreTickCounter = 0;
 
 const scoreInt = setInterval(() => {
   score = Math.min(score + Math.floor(Math.random() * 300 + 50), 999999);
@@ -216,3 +199,46 @@ document.querySelectorAll(".skill-card").forEach((el) => {
 document.querySelectorAll(".proj-card").forEach((el) => {
   el.addEventListener("mouseenter", playHoverSound);
 });
+
+// ─────────────────────────────────────────────
+//  CONTACT FORM — Formspree without redirect
+// ─────────────────────────────────────────────
+const contactForm = document.getElementById("contact-form");
+const formStatus = document.getElementById("form-status");
+
+if (contactForm && formStatus) {
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    playSelectSound();
+
+    const submitBtn = contactForm.querySelector(".form-submit");
+    if (!submitBtn) return;
+
+    submitBtn.disabled = true;
+    formStatus.textContent = "ENVIANDO MENSAJE...";
+    formStatus.classList.remove("is-success", "is-error");
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: contactForm.method,
+        body: new FormData(contactForm),
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        contactForm.reset();
+        formStatus.textContent = "✔ MENSAJE ENVIADO. TE RESPONDO PRONTO.";
+        formStatus.classList.add("is-success");
+      } else {
+        formStatus.textContent = "✖ NO SE PUDO ENVIAR. PRUEBA OTRA VEZ.";
+        formStatus.classList.add("is-error");
+      }
+    } catch (error) {
+      console.error("Error enviando formulario:", error);
+      formStatus.textContent = "✖ ERROR DE CONEXION. INTENTALO DE NUEVO.";
+      formStatus.classList.add("is-error");
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+}

@@ -475,7 +475,7 @@
       box-shadow: 0 -4px 0 var(--orange);
     }
     .contact-inner { max-width: 1100px; margin: 0 auto; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; }
 
     .contact-text p {
       font-family: var(--vt);
@@ -484,28 +484,87 @@
       line-height: 1.7;
       margin-bottom: 12px;
     }
-    .hi-score-box {
-      margin-top: 24px;
+    .contact-text { grid-column: 1 / -1; max-width: 780px; }
+    .contact-form {
       border: 3px solid var(--yellow);
       padding: 16px 20px;
       box-shadow: 4px 4px 0 var(--orange);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
-    .hi-score-title {
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
       font-size: 8px;
-      color: var(--yellow);
+      color: var(--cyan);
       letter-spacing: 2px;
-      margin-bottom: 12px;
     }
-    .hi-score-row {
+
+    .form-input {
+      width: 100%;
+      border: 3px solid var(--purple);
+      background: var(--bg);
+      color: var(--white);
       font-family: var(--vt);
       font-size: 20px;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 4px;
+      padding: 10px 12px;
+      cursor: none;
     }
-    .hi-score-row .rank { color: var(--pink); }
-    .hi-score-row .name { color: var(--white); letter-spacing: 2px; }
-    .hi-score-row .pts  { color: var(--yellow); }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--yellow);
+      box-shadow: 3px 3px 0 var(--orange);
+    }
+
+    .form-submit {
+      margin-top: 4px;
+      border: 3px solid var(--yellow);
+      background: var(--bg);
+      color: var(--yellow);
+      font-family: var(--press);
+      font-size: 10px;
+      letter-spacing: 1px;
+      padding: 12px 14px;
+      cursor: none;
+      transition: all 0.1s;
+    }
+
+    .form-submit:hover {
+      background: var(--yellow);
+      color: var(--bg);
+      box-shadow: 4px 4px 0 var(--orange);
+      transform: translate(-2px,-2px);
+    }
+
+    .form-submit:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 2px;
+    }
+    .form-submit:disabled {
+      opacity: 0.6;
+    }
+    .form-status {
+      display: none;
+      margin: 4px 0 0;
+      font-family: var(--vt);
+      font-size: 18px;
+      color: #aaa;
+    }
+    .form-status:not(:empty) { display: block; }
+    .form-status.is-success { color: var(--yellow); }
+    .form-status.is-error { color: var(--pink); }
 
     .contact-links { display: flex; flex-direction: column; gap: 14px; }
     .contact-link {

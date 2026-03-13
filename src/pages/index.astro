@@ -265,13 +265,23 @@ export const prerender = true
         <div class="contact-text fade-up">
           <p>¿Quieres colaborar, conectar o simplemente hablar de tecnología?</p>
           <p>Estoy en modo <span style="color:var(--yellow)">MULTIPLAYER</span> — siempre dispuesto a hacer equipo.</p>
-          <div class="hi-score-box">
-            <div class="hi-score-title">✦ HI-SCORE BOARD ✦</div>
-            <div class="hi-score-row"><span class="rank">1ST</span><span class="name">D.MARTIN</span><span class="pts">999999</span></div>
-            <div class="hi-score-row"><span class="rank">2ND</span><span class="name">TU</span><span class="pts">??????</span></div>
-            <div class="hi-score-row"><span class="rank">3RD</span><span class="name">---</span><span class="pts">000000</span></div>
-          </div>
         </div>
+        <form id="contact-form" class="contact-form fade-up" action="https://formspree.io/f/xkoqjjga" method="POST">
+          <label class="form-field" for="contact-name">
+            <span class="form-label">NOMBRE</span>
+            <input class="form-input" id="contact-name" name="name" type="text" required />
+          </label>
+          <label class="form-field" for="contact-email">
+            <span class="form-label">EMAIL</span>
+            <input class="form-input" id="contact-email" name="email" type="email" required />
+          </label>
+          <label class="form-field" for="contact-message">
+            <span class="form-label">MENSAJE</span>
+            <textarea class="form-input form-textarea" id="contact-message" name="message" required></textarea>
+          </label>
+          <button class="form-submit" type="submit">▶ ENVIAR MENSAJE</button>
+          <p id="form-status" class="form-status" aria-live="polite"></p>
+        </form>
         <div class="contact-links fade-up">
           <a href="mailto:hello@dmartin.me" class="contact-link">
             <span class="c-icon">✉</span>
