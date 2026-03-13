@@ -2,10 +2,20 @@
 import Parser from 'rss-parser';
 
 const parser = new Parser();
-let movies = [];
+type Movie = {
+  link: string;
+  content: string;
+  title: string;
+};
+
+let movies: Movie[] = [];
 try {
   const feed = await parser.parseURL('https://letterboxd.com/dmartin015/rss/');
-  movies = feed.items.slice(0, 4); // Las 4 últimas
+  movies = feed.items.slice(0, 4).map((item) => ({
+    link: item.link ?? '#',
+    content: item.content ?? '',
+    title: item.title ?? 'Untitled',
+  })); // Las 4 últimas
 } catch (error) {
   console.error('Error fetching Letterboxd feed:', error);
 }
