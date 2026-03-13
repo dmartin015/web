@@ -81,27 +81,23 @@ canvas { background: #000; display: block; image-rendering: pixelated; }
   const btnRestart = document.getElementById('restart-snake');
   const btnTryAgain = document.getElementById('try-again-btn');
   const gameOverScreen = document.getElementById('game-over-screen');
-  const canvas = /** @type {HTMLCanvasElement | null} */ (document.getElementById('snake-game'));
-  const ctx = canvas?.getContext('2d');
+  const canvas = document.getElementById('snake-game') as HTMLCanvasElement | null;
+  const ctx = canvas?.getContext('2d') ?? null;
   const scoreEl = document.getElementById('snake-score');
   const finalScoreEl = document.getElementById('final-score');
   
-  /** @type {{ x: number; y: number }[]} */
-  let snake = [{ x: 0, y: 0 }];
-  /** @type {{ x: number; y: number }} */
-  let food = { x: 0, y: 0 };
-  /** @type {number} */
-  let dx = 0;
-  /** @type {number} */
-  let dy = 0;
-  /** @type {number} */
-  let score = 0;
-  /** @type {number | null} */
-  let gameInterval = null;
+  type Point = { x: number; y: number };
+
+  let snake: Point[] = [{ x: 0, y: 0 }];
+  let food: Point = { x: 0, y: 0 };
+  let dx: number = 0;
+  let dy: number = 0;
+  let score: number = 0;
+  let gameInterval: ReturnType<typeof setInterval> | null = null;
 
   const closeGame = () => {
     overlay?.classList.remove('active');
-    if (gameInterval) clearInterval(gameInterval);
+    if (gameInterval !== null) clearInterval(gameInterval);
   };
   btnClose?.addEventListener('click', closeGame);
 
@@ -131,7 +127,7 @@ canvas { background: #000; display: block; image-rendering: pixelated; }
     score = 0;
 
     if(scoreEl) scoreEl.textContent = '0';
-    if(gameInterval) clearInterval(gameInterval);
+    if (gameInterval !== null) clearInterval(gameInterval);
     gameInterval = setInterval(gameLoop, 100);
   }
 
@@ -153,7 +149,7 @@ canvas { background: #000; display: block; image-rendering: pixelated; }
     
     // Walls
     if(head.x < 0 || head.x >= canvasSize || head.y < 0 || head.y >= canvasSize || snake.some((part) => part.x === head.x && part.y === head.y)) {
-      if (gameInterval) clearInterval(gameInterval);
+      if (gameInterval !== null) clearInterval(gameInterval);
       if(typeof window.playGameOverSound === 'function') window.playGameOverSound();
       if(finalScoreEl) finalScoreEl.textContent = score.toString();
       gameOverScreen?.classList.remove('hidden');
@@ -175,18 +171,18 @@ canvas { background: #000; display: block; image-rendering: pixelated; }
     draw();
   }
 
-  function drawGrid() {
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-    ctx.lineWidth = 1;
+  function drawGrid(renderCtx: CanvasRenderingContext2D) {
+    renderCtx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+    renderCtx.lineWidth = 1;
     for (let i = 0; i < canvasSize; i += cellSize) {
-        ctx.beginPath();
-        ctx.moveTo(i, 0);
-        ctx.lineTo(i, canvasSize);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(0, i);
-        ctx.lineTo(canvasSize, i);
-        ctx.stroke();
+        renderCtx.beginPath();
+        renderCtx.moveTo(i, 0);
+        renderCtx.lineTo(i, canvasSize);
+        renderCtx.stroke();
+        renderCtx.beginPath();
+        renderCtx.moveTo(0, i);
+        renderCtx.lineTo(canvasSize, i);
+        renderCtx.stroke();
     }
   }
 
@@ -194,7 +190,7 @@ canvas { background: #000; display: block; image-rendering: pixelated; }
     if(!ctx || !canvas) return;
     ctx.clearRect(0,0,canvas.width,canvas.height);
     
-    drawGrid();
+    drawGrid(ctx);
     
     // Food
     ctx.fillStyle = '#ff2d78';
