@@ -81,16 +81,27 @@ canvas { background: #000; display: block; image-rendering: pixelated; }
   const btnRestart = document.getElementById('restart-snake');
   const btnTryAgain = document.getElementById('try-again-btn');
   const gameOverScreen = document.getElementById('game-over-screen');
-  const canvas = document.getElementById('snake-game') as HTMLCanvasElement;
+  const canvas = /** @type {HTMLCanvasElement | null} */ (document.getElementById('snake-game'));
   const ctx = canvas?.getContext('2d');
   const scoreEl = document.getElementById('snake-score');
   const finalScoreEl = document.getElementById('final-score');
   
-  let snake, food, dx, dy, score, gameInterval;
+  /** @type {{ x: number; y: number }[]} */
+  let snake = [{ x: 0, y: 0 }];
+  /** @type {{ x: number; y: number }} */
+  let food = { x: 0, y: 0 };
+  /** @type {number} */
+  let dx = 0;
+  /** @type {number} */
+  let dy = 0;
+  /** @type {number} */
+  let score = 0;
+  /** @type {number | null} */
+  let gameInterval = null;
 
   const closeGame = () => {
     overlay?.classList.remove('active');
-    clearInterval(gameInterval);
+    if (gameInterval) clearInterval(gameInterval);
   };
   btnClose?.addEventListener('click', closeGame);
 
@@ -125,13 +136,13 @@ canvas { background: #000; display: block; image-rendering: pixelated; }
   }
 
   function spawnFood() {
-    let newFood;
+    let newFood = { x: 0, y: 0 };
     while (true) {
       newFood = {
         x: Math.floor(Math.random() * maxCells) * cellSize,
         y: Math.floor(Math.random() * maxCells) * cellSize
       };
-      const onSnake = snake.some(part => part.x === newFood.x && part.y === newFood.y);
+      const onSnake = snake.some((part) => part.x === newFood.x && part.y === newFood.y);
       if (!onSnake) break;
     }
     return newFood;
@@ -141,8 +152,8 @@ canvas { background: #000; display: block; image-rendering: pixelated; }
     const head = {x: snake[0].x + dx, y: snake[0].y + dy};
     
     // Walls
-    if(head.x < 0 || head.x >= canvasSize || head.y < 0 || head.y >= canvasSize || collision(head, snake)) {
-      clearInterval(gameInterval);
+    if(head.x < 0 || head.x >= canvasSize || head.y < 0 || head.y >= canvasSize || snake.some((part) => part.x === head.x && part.y === head.y)) {
+      if (gameInterval) clearInterval(gameInterval);
       if(typeof window.playGameOverSound === 'function') window.playGameOverSound();
       if(finalScoreEl) finalScoreEl.textContent = score.toString();
       gameOverScreen?.classList.remove('hidden');
@@ -162,13 +173,6 @@ canvas { background: #000; display: block; image-rendering: pixelated; }
     }
 
     draw();
-  }
-
-  function collision(head, array) {
-    for(let i=0; i < array.length; i++){
-      if(head.x === array[i].x && head.y === array[i].y) return true;
-    }
-    return false;
   }
 
   function drawGrid() {

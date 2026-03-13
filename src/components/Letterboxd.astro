@@ -11,7 +11,7 @@ try {
 }
 
 // Function to extract image src from RSS content
-function extractImage(content) {
+function extractImage(content: string = '') {
   const imgRegex = /<img[^>]+src="([^">]+)"/;
   const match = content.match(imgRegex);
   return match ? match[1] : '';
