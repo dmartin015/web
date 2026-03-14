@@ -7,4 +7,6 @@ export default defineConfig({
   adapter: vercel({
     webAnalytics: { enabled: true },
   }),
+
+  site: 'dmartin.me',
 });
