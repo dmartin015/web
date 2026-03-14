@@ -8,5 +8,5 @@ export default defineConfig({
     webAnalytics: { enabled: true },
   }),
 
-  site: 'dmartin.me',
+  site: 'https://www.dmartin.me',
 });
